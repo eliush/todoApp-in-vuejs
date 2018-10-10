@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import VueLocalStorage from 'vue-localstorage'
 import VueRouter from 'vue-router'
 import Routes from './route.js'
+import {store} from './store/store'
  
 Vue.use(VueLocalStorage);
 Vue.use(VueRouter);
@@ -29,6 +30,7 @@ Vue.component("prac",Prac);*/ //this global registry for nested
 export const bus = new Vue();
 new Vue({
   el: '#app',
+  store: store,
   render: h => h(App),
   router : route
 })

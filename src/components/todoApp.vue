@@ -31,8 +31,7 @@ export default {
   data () {
     return {
       newTodo: "",      
-      todos: JSON.parse(localStorage.getItem("items")) || [],
-      filter: 'all',
+      newId: 0
      
     }
 
@@ -43,53 +42,44 @@ export default {
         alert("its can`t be empty");
         return
       }else{
-        this.todos.push({
-        id: this.todoId,
+        this.$store.commit('add',{
+        id: this.newId,
         text: this.newTodo,
-        checked: false
       });
       
-      //console.log(this.todos.length);
-      //this.todoId++;
+      //console.log(this.$store.state.todos.length);
+      this.newId++;
       this.newTodo = "";
-      localStorage.setItem("items",JSON.stringify(this.todos));
+      localStorage.setItem("items",JSON.stringify(this.$store.state.todos));
       }
       
     },
     remove:function(index){
       alert("removed");
-      this.todos.splice(index,1);
-      localStorage.setItem("items",JSON.stringify(this.todos));
+      this.$store.state.todos.splice(index,1);
+      localStorage.setItem("items",JSON.stringify(this.$store.state.todos));
     },
     
     /*all: function(){
       console.log("com");
-      return this.todos;
+      return this.$store.state.todos;
     },*/
     com: function(){
       //console.log("com");
-      this.todos = this.todos.filter(todo => !todo.checked);
+      this.$store.state.todos = this.$store.state.todos.filter(todo => !todo.checked);
     },
     save(){
-        localStorage.setItem("items",JSON.stringify(this.todos));
+        localStorage.setItem("items",JSON.stringify(this.$store.state.todos));
     }    
   },
   computed:{    
     todoId: function(){
-      return this.todos.length;
+      return this.$store.getters.todoId;
     },
     todosFiltered() {
-      if (this.filter == 'all') {
-        console.log("hi");
-        return this.todos
-      } else if (this.filter == 'active') {
-        return this.todos.filter(todo => !todo.checked)
-      } else if (this.filter == 'completed') {
-        return this.todos.filter(todo => todo.checked)
-      }
-      return this.todos
+      return this.$store.getters.todosFiltered;
     },
-   
+
     
   }
 }

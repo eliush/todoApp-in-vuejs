@@ -1,9 +1,9 @@
 import todoApp from "./components/todoApp.vue"
-import addBlog from "./components/addBlog.vue"
-import singleBlog from "./components/singleBlog.vue"
+//import addBlog from "./components/addBlog.vue"
+//import singleBlog from "./components/singleBlog.vue"
+import viewTodo from "./components/viewTodo.vue"
 
 export default[
-    {path:'/',component:addBlog},
-    {path:'/todo',component: todoApp},
-    {path:'/blog/:id',component: singleBlog}
+    {path:'/',component:todoApp},
+    {path:'/vTodo',component: viewTodo}
 ]
