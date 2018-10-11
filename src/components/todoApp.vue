@@ -4,7 +4,8 @@
       <input type="text" v-model="newTodo" v-on:keyup.enter="add"/>
       <div id="todo" v-for="(todo,index) in todosFiltered" :key="todo.id">
         <input type="checkbox" v-model="todo.checked" v-on:change="save">
-        <div v-bind:class="{completed: todo.checked}">{{todo.text}}</div>
+        <div v-bind:class="{completed: todo.checked}" id="text"><span>{{todo.text}}</span></div>
+        <router-link v-bind:to="'/vTodo/'+todo.id"><span><button class="edit">Edit</button></span></router-link>
         <div class="remove" v-on:click="remove(index)">
           &times;
         </div>
@@ -87,7 +88,6 @@ export default {
 
 
 <style scoped> /* scoped use for style individual*/
-
 #todoapp{
   max-width: 500px;
   margin: 50px auto;
@@ -114,6 +114,9 @@ input[type="text"]{
   justify-content: space-between;
   margin: 10px 0;
 }
+span button{ 
+  width: 70px;
+}
 #left{
   width: 100%;
   height: 40px;
@@ -123,7 +126,7 @@ input[type="text"]{
   border-radius: 3px;
   text-align: center;
 }
-button{
+#but button{
   width: 162px;
   height:40px;
   margin-top: 20px;
@@ -139,6 +142,8 @@ button{
 }
 #abut button{
   width: 240px;
+  height: 40px;
+  margin-top: 10px;
 }
 .completed{
   text-decoration: line-through;

@@ -5,5 +5,5 @@ import viewTodo from "./components/viewTodo.vue"
 
 export default[
     {path:'/',component:todoApp},
-    {path:'/vTodo',component: viewTodo}
+    {path:'/vTodo/:id',component: viewTodo}
 ]

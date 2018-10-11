@@ -10,6 +10,7 @@ import addBlog from "./components/addBlog.vue";
 import showBlogs from "./components/showBlogs.vue";
 import header from "./components/header.vue";
 import singleBlog from "./components/singleBlog.vue";
+import viewTodo from "./components/viewTodo.vue";
 
 export default {
   components: {
@@ -17,7 +18,8 @@ export default {
     "show-blog": showBlogs,
     "todo-app" : todoApp,
     "app-header" : header,
-    "single-blog" : singleBlog
+    "single-blog" : singleBlog,
+    "vTodo" : viewTodo
   },
   data () {
     return {
